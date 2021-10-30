@@ -1,62 +1,41 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
 // project imports
-import MainLayout from 'layout/MainLayout';
-import Loadable from 'ui-component/Loadable';
+import MainLayout from "layout/MainLayout";
+import Loadable from "ui-component/Loadable";
+import JoinTeam from "../views/pages/JoinTeam";
 
 // dashboard routing
-const DashboardDefault = Loadable(lazy(() => import('views/dashboard/Default')));
-
-// utilities routing
-const UtilsTypography = Loadable(lazy(() => import('views/utilities/Typography')));
-const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
-const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
-const UtilsMaterialIcons = Loadable(lazy(() => import('views/utilities/MaterialIcons')));
-const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
+const DashboardDefault = Loadable(
+  lazy(() => import("views/dashboard/Default"))
+);
 
 // sample page routing
-const DashboardPage = Loadable(lazy(() => import('views/sample-page')));
+const DashboardPage = Loadable(lazy(() => import("views/sample-page")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
 const MainRoutes = {
-    path: '/',
-    element: <MainLayout />,
-    children: [
-        {
-            path: '/',
-            element: <DashboardPage />
-        },
-        {
-            path: '/dashboard',
-            element: <DashboardPage />
-        },
-        {
-            path: '/profile',
-            element: <DashboardDefault />
-        },
-
-        {
-            path: '/utils/util-typography',
-            element: <UtilsTypography />
-        },
-        {
-            path: '/utils/util-color',
-            element: <UtilsColor />
-        },
-        {
-            path: '/utils/util-shadow',
-            element: <UtilsShadow />
-        },
-        {
-            path: '/icons/tabler-icons',
-            element: <UtilsTablerIcons />
-        },
-        {
-            path: '/icons/material-icons',
-            element: <UtilsMaterialIcons />
-        }
-    ]
+  path: "/",
+  element: <MainLayout />,
+  children: [
+    {
+      path: "/",
+      element: <DashboardPage />,
+    },
+    {
+      path: "/dashboard",
+      element: <DashboardPage />,
+    },
+    {
+      path: "/profile",
+      element: <DashboardDefault />,
+    },
+    {
+      path: "/joinMatch/:mId",
+      element: <JoinTeam />,
+    },
+  ],
 };
 
 export default MainRoutes;
