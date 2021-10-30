@@ -11,10 +11,21 @@ function MetaMaskConector() {
       console.error(exeption);
     }
   }
+
+  async function disconnectWallet() {
+    try {
+      await deactivate();
+    } catch (ex) {
+      console.error(ex);
+    }
+  }
   return (
-    <button onClick={connectWallet}>
-      {active ? `Connected to ${account}` : "Connect to MetaMask"}
-    </button>
+    <>
+      <button onClick={connectWallet}>
+        {active ? `Connected to ${account}` : "Connect to MetaMask"}
+      </button>
+      {active && <button onClick={disconnectWallet}>Disconnect</button>}
+    </>
   );
 }
 export default MetaMaskConector;
