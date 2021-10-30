@@ -36,10 +36,7 @@
     "react-router-dom": "6.0.0-beta.0",
     "react-scripts": "^4.0.3",
     "redux": "^4.0.5",
-<<<<<<< HEAD
-=======
     "web3": "^1.6.0",
->>>>>>> bba9aa06069b111764c513f7b4885d255ce9274e
     "yup": "^0.32.9"
   },
   "scripts": {
