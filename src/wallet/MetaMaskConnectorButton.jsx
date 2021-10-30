@@ -1,5 +1,6 @@
 import { injected } from "./connectors";
 import { useWeb3React } from "@web3-react/core";
+import {Button} from '@mui/material';
 
 function MetaMaskConector() {
   const { activate, active, library, connector, deactivate, account } =
@@ -21,10 +22,10 @@ function MetaMaskConector() {
   }
   return (
     <>
-      <button onClick={connectWallet}>
+      <Button variant="outlined" color={active?"success":"primary"} onClick={connectWallet} >
         {active ? `Connected to ${account}` : "Connect to MetaMask"}
-      </button>
-      {active && <button onClick={disconnectWallet}>Disconnect</button>}
+      </Button>
+      {active && <Button variant="contained" color="error" sx={{mx:1}} onClick={disconnectWallet}>Disconnect</Button>}
     </>
   );
 }
