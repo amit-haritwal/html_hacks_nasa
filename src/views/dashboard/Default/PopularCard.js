@@ -6,7 +6,6 @@ import { useTheme } from '@mui/material/styles';
 import { Avatar, Button, CardActions, CardContent, Divider, Grid, Menu, MenuItem, Typography } from '@mui/material';
 
 // project imports
-import BajajAreaChartCard from './BajajAreaChartCard';
 import MainCard from 'ui-component/cards/MainCard';
 import SkeletonPopularCard from 'ui-component/cards/Skeleton/PopularCard';
 import { gridSpacing } from 'store/constant';
@@ -78,9 +77,6 @@ const PopularCard = ({ isLoading }) => {
                                         </Menu>
                                     </Grid>
                                 </Grid>
-                            </Grid>
-                            <Grid item xs={12} sx={{ pt: '16px !important' }}>
-                                <BajajAreaChartCard />
                             </Grid>
                             <Grid item xs={12}>
                                 <Grid container direction="column">

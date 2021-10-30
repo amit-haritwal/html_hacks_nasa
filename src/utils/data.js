@@ -8,58 +8,49 @@ export const MATCHES = [
       players: [
         {
           playerName: "Virat",
+          displayPicture: "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
           pointRequired: 9,
           playerType: "Batsman",
         },
         {
-          playerName: "Virat",
+          playerName: "Dhoni",
+          displayPicture: "https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg",
           pointRequired: 9,
           playerType: "Batsman",
         },
         {
-          playerName: "Virat",
-          pointRequired: 9,
+          playerName: "Rohit",
+          displayPicture: "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+          pointRequired:11,
           playerType: "Batsman",
         },
         {
-          playerName: "Virat",
-          pointRequired: 9,
+          playerName: "Shikhar",
+          displayPicture: "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+          pointRequired: 11,
           playerType: "Batsman",
         },
         {
-          playerName: "Virat",
-          pointRequired: 9,
+          playerName: "Rohit",
+          displayPicture: "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+          pointRequired: 11,
           playerType: "Batsman",
         },
         {
-          playerName: "Virat",
-          pointRequired: 9,
+          playerName: "Hardik Pandya",
+          displayPicture: "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+          pointRequired: 11,
           playerType: "Batsman",
         },
         {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Baller",
+          playerName: "Umesh Yadav",
+          pointRequired: 12,
+          playerType: "Bowler",
         },
         {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Baller",
-        },
-        {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Baller",
-        },
-        {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Baller",
-        },
-        {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Baller",
+          playerName: "Jasprit Bumrah",
+          pointRequired: 8,
+          playerType: "Bowler",
         },
       ],
     },
@@ -67,20 +58,11 @@ export const MATCHES = [
       teamName: "India",
       players: [
         {
-          playerName: "Virat",
+          playerName: "Hardik Pandya",
           pointRequired: 9,
           playerType: "Batsman",
         },
-        {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Batsman",
-        },
-        {
-          playerName: "Virat",
-          pointRequired: 9,
-          playerType: "Batsman",
-        },
+        
         {
           playerName: "Virat",
           pointRequired: 9,

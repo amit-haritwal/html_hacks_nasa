@@ -23,7 +23,7 @@ function PlayerCard(props) {
 			<CardHeader
 				avatar={
 					<Avatar
-						src="https://i.ibb.co/qmwPVm9/Cream11-Logo.png"
+						src={playerInfo.displayPicture}
 						aria-label="Player"
 					/>
 				}

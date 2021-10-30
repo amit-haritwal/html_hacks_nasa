@@ -33,6 +33,7 @@ function JoinTeam(props) {
 					{/* show teamA list */}
 					{!loading && (
 						<TeamList
+							displayPicture={matchInfo?.teamA.displayPicture}
 							teamName={matchInfo?.teamA.teamName}
 							players={matchInfo?.teamA.players}
 							onSelectPlayer={selectPlayer}
