@@ -43,15 +43,12 @@ function JoinTeam(props) {
 				<Grid item xs={12} lg={4}>
 					{selectedTeam.length > 0 &&
 						selectedTeam.map((player) => {
-							{
-								/* console.log('selectedteam', selectedTeam); */
-							}
-
 							return (
 								<PlayerCard
 									playerInfo={player}
 									teamDetails={selectedTeam}
 									setTeam={setSelectedTeam}
+									showSymbol={false}
 								/>
 							);
 						})}
