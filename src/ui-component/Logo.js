@@ -65,8 +65,8 @@ const Logo = () => {
         //         fill={theme.palette.primary.main}
         //     />
         // </svg>
-        // <img src={logo} alt="Berry" width="100" />
-        <h1>Cream11</h1>
+        <img src="https://i.ibb.co/qmwPVm9/Cream11-Logo.png" alt="Berry" height="50" />
+
 
 
     );
