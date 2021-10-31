@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { MATCHES } from "utils/data";
 import TeamList from "./TeamList";
 import PlayerCard from "./PlayerCard";
@@ -11,12 +11,14 @@ import TotalPoints from "./TotalPoints";
 import useUserContract from "hooks/useUserContract";
 
 function JoinTeam(props) {
+  const navigate = useNavigate();
+
   //mid
   const [matchInfo, setMatchInfo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [success, setSuccess] = useState(false);
-  const [score, setScore] = useState(0);
+  const [shouldShowCreateTeam, setShouldShowCreateTeam] = useState(false);
+  const [remainingPoints, setRemainingPoints] = useState(100);
   const [scoreError, setScoreError] = useState(false);
   const params = useParams();
   const { createTeam, initContract } = useUserContract();
@@ -30,6 +32,22 @@ function JoinTeam(props) {
   }, []);
 
   const [selectedTeam, setSelectedTeam] = useState([]);
+  useEffect(() => {
+    if (selectedTeam.length === 11) {
+      setShouldShowCreateTeam(true);
+    } else {
+      setShouldShowCreateTeam(false);
+    }
+
+    if (selectedTeam.length >= 11) {
+      setError("Team length can be max 11");
+    }
+    if (remainingPoints <= 0) {
+      setError("Not enough points available");
+    } else {
+      setError(false);
+    }
+  }, [selectedTeam, remainingPoints]);
 
   async function handleCreateTeam() {
     const instance = await initContract();
@@ -52,36 +70,24 @@ function JoinTeam(props) {
       array,
       {
         from: "0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435",
+        value: 100000000000000000,
       }
     );
+
+    navigate("/leaderboard/match_1");
   }
 
   function selectPlayer(playerInfo) {
-    //console.log("hi");
     setSelectedTeam([...selectedTeam, playerInfo]);
-
-    var totalscore = score + playerInfo.pointRequired;
-
-    if (totalscore >= 100) {
-      setScoreError(true);
-    } else setScore(totalscore);
-
-    if (selectedTeam.length === 11) {
-      setSuccess(true);
-    }
-
-    if (selectedTeam.length > 11) {
-      setSelectedTeam(selectedTeam.slice(1));
-      console.log("error check");
-      setError(true);
-      // setSuccess(true);
-    }
+    var totalscore = remainingPoints - playerInfo.pointRequired;
+    if (totalscore <= 0) return;
+    setRemainingPoints(totalscore);
   }
 
   function removePlayer(playerInfo) {
-    var totalscore = score - playerInfo.pointRequired;
+    var totalscore = remainingPoints + playerInfo.pointRequired;
 
-    setScore(totalscore);
+    setRemainingPoints(totalscore);
 
     setSelectedTeam(
       selectedTeam.filter((player) => {
@@ -94,32 +100,32 @@ function JoinTeam(props) {
     <>
       <Grid container spacing={3}>
         <Grid item xs={12} lg={4} sx={{ my: 2 }}>
-          <TotalPoints score={score} />
+          <TotalPoints score={remainingPoints} />
         </Grid>
         <Grid item xs={12} lg={4} sx={{ my: 2 }}>
-          {error && (
-            <Alert severity="error" sx={{ mb: 2 }}>
-              <AlertTitle>Error</AlertTitle>
-              <strong> Only 11 Players Are Allowed </strong>
-            </Alert>
-          )}
-          {scoreError && (
+          {!!scoreError && (
             <Alert severity="error">
               <AlertTitle>Error</AlertTitle>
-              <strong> Total Score Should Be Less Than 100 </strong>
+              <strong> {scoreError} </strong>
             </Alert>
           )}
         </Grid>
         <Grid item align="center" xs={12} lg={4} sx={{ my: 2 }}>
-          <Button color="primary" variant="outlined" onClick={handleCreateTeam}>
-            Create Team
-          </Button>
-
-          <Alert severity="info">
-            {" "}
-            <AlertTitle>Please Select 11 Players</AlertTitle>{" "}
-            <strong>{selectedTeam.length} Players Selected</strong>{" "}
-          </Alert>
+          {shouldShowCreateTeam ? (
+            <Button
+              color="primary"
+              variant="outlined"
+              onClick={handleCreateTeam}
+            >
+              Create Team
+            </Button>
+          ) : (
+            <Alert severity="info">
+              {" "}
+              <AlertTitle>Please Select 11 Players</AlertTitle>{" "}
+              <strong>{selectedTeam.length} Players Selected</strong>{" "}
+            </Alert>
+          )}
         </Grid>
       </Grid>
       <Grid container spacing={2}>
@@ -139,20 +145,18 @@ function JoinTeam(props) {
           <Typography variant="h2" align="center" gutterBottom>
             Your Team
           </Typography>
-          {selectedTeam.length > 0 &&
-            selectedTeam.map((player) => {
-              {
-                /* console.log('selectedteam', selectedTeam); */
-              }
-
-              return (
-                <PlayerCard
-                  playerInfo={player}
-                  teamDetails={selectedTeam}
-                  setTeam={setSelectedTeam}
-                />
-              );
-            })}
+          <div style={{ height: "34rem", width: "auto", overflowY: "auto" }}>
+            {selectedTeam.length > 0 &&
+              selectedTeam.map((player) => {
+                return (
+                  <PlayerCard
+                    playerInfo={player}
+                    teamDetails={selectedTeam}
+                    setTeam={setSelectedTeam}
+                  />
+                );
+              })}
+          </div>
         </Grid>
 
         <Grid item xs={12} lg={4}>
