@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { Card, CardHeader, Avatar, IconButton, Divider } from "@mui/material";
+import { Card, CardHeader, Avatar, IconButton, Divider, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -28,17 +28,17 @@ function PlayerCard(props) {
         avatar={<Avatar src={playerInfo.displayPicture} aria-label="Player" />}
         action={
           onSelectPlayer && (
-            <IconButton aria-label="add">
+            <>
               {selected ? (
-                <button onClick={handleRemovePlayer}>
+                <IconButton color="error"  onClick={handleRemovePlayer}>
                   <RemoveIcon />
-                </button>
+                </IconButton>
               ) : (
-                <button onClick={handleOnPlayerAdd}>
+                <IconButton color="primary" onClick={handleOnPlayerAdd}>
                   <AddIcon />
-                </button>
+                </IconButton>
               )}
-            </IconButton>
+            </>
           )
         }
         title={playerInfo.playerName}

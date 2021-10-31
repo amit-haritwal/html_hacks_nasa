@@ -3,10 +3,11 @@ import { useParams } from 'react-router-dom';
 import { MATCHES } from 'utils/data';
 import TeamList from './TeamList';
 import PlayerCard from './PlayerCard';
-import { Grid } from '@mui/material';
+import { Grid, Button , Typography} from '@mui/material';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
+import TotalPoints from './TotalPoints';
 
 function JoinTeam(props) {
 	//mid
@@ -61,7 +62,7 @@ function JoinTeam(props) {
 			)}
 			{success && (
 				<div>
-					<button>Create Team</button>
+					<Button color="primary" >Create Team</Button>
 				</div>
 			)}
 
@@ -79,6 +80,7 @@ function JoinTeam(props) {
 					)}
 				</Grid>
 				<Grid item xs={12} lg={4}>
+					<Typography variant="h2" align="center" gutterBottom >Your Team</Typography>
 					{selectedTeam.length > 0 &&
 						selectedTeam.map((player) => {
 							{
