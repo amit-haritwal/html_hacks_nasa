@@ -1,5 +1,5 @@
 import { Card } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import { USERS } from "utils/data";
 import UserCard from "./UserCard";
 import {
@@ -15,8 +15,18 @@ import SportsScoreIcon from "@mui/icons-material/Money";
 import MainCard from "ui-component/cards/MainCard";
 
 import { useTheme, styled } from "@mui/material/styles";
+import useUserContract from "hooks/useUserContract";
 
 function LeaderBoard() {
+  const { initContract } = useUserContract();
+  useEffect(() => {
+    window.getWinner = async () => {
+      const instance = await initContract();
+      instance.givePrice(1, {
+        from: "0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435",
+      });
+    };
+  }, []);
   return (
     <div>
       <center>

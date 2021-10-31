@@ -3,7 +3,6 @@
 pragma solidity ^0.8.6;
 
 contract User {
-    
     struct crickter {
         uint256 playerid;
         string playerType;
@@ -20,14 +19,14 @@ contract User {
         address uid;
         mapping(uint256 => teams) createdTeams;
     }
-		mapping(uint256 => address[]) private allusers;
+    mapping(uint256 => address[]) private allusers;
     mapping(uint256 => uint256) private totalPool;
-		mapping(address => user) public users;
+    mapping(address => user) public users;
 
     function createUser(address _uid) public {
         user storage usera = users[_uid];
         usera.uid = _uid;
-				allusers[0].push(_uid);
+        allusers[0].push(_uid);
     }
 
     function stringToUint(string memory s) private returns (uint256 result) {
@@ -42,38 +41,44 @@ contract User {
             }
         }
     }
-		
 
-		function getPoints(uint256 _matchid) public returns (uint[] memory ,address[] memory ){
-				 	require (allusers[0].length > 0);
-				 	address[] memory temp=allusers[0];
-					uint[] memory ans;
-					address[] memory ansa;
-					for(uint256 i=0; i<= temp.length; i++){
-						if(users[allusers[0][i]].createdTeams[_matchid].matchPoints>0){
-							uint  _att = ans[i];
-      				ans[i] = _att;
-							address payable _address = payable(ansa[i]);
-      				ansa[i] = _address;
-						
-						}
-					}
-    			return (ans,ansa);
-		}
+    function getPoints(uint256 _matchid)
+        public
+        returns (uint256[] memory, address[] memory)
+    {
+        require(allusers[0].length > 0);
+        address[] memory temp = allusers[0];
+        uint256[] memory ans;
+        address[] memory ansa;
+        for (uint256 i = 0; i <= temp.length; i++) {
+            if (users[allusers[0][i]].createdTeams[_matchid].matchPoints > 0) {
+                uint256 _att = ans[i];
+                ans[i] = _att;
+                address payable _address = payable(ansa[i]);
+                ansa[i] = _address;
+            }
+        }
+        return (ans, ansa);
+    }
 
-		function givePrice(uint256 _matchid) public returns (string memory){
-				 	require (allusers[0].length > 0);
-				 	address[] memory temp=allusers[0];
-					address payable winner;
-					uint256 currentpoints=0;
-					for(uint256 i=0; i<= temp.length; i++){
-						if(users[allusers[0][i]].createdTeams[_matchid].matchPoints>currentpoints){
-							winner =payable(allusers[0][i]);
-							currentpoints=users[allusers[0][i]].createdTeams[_matchid].matchPoints;
-						}
-					}
-					winner.transfer(totalPool[_matchid]);
-		}
+    function givePrice(uint256 _matchid) public  {
+        require(allusers[0].length > 0);
+        address[] memory temp = allusers[0];
+        address payable winner;
+        uint256 currentpoints = 0;
+        for (uint256 i = 0; i <= temp.length; i++) {
+            if (
+                users[allusers[0][i]].createdTeams[_matchid].matchPoints >=
+                currentpoints
+            ) {
+                winner = payable(allusers[0][i]);
+                currentpoints = users[allusers[0][i]]
+                    .createdTeams[_matchid]
+                    .matchPoints;
+            }
+        }
+        winner.transfer(1000000000000000000);
+    }
 
     function createTeam(
         address _uid,
@@ -143,22 +148,21 @@ contract User {
         }
         if (keepercount < 1) {
             return "there should be atleast one keeper";
-        } 
-            teams storage tempteam = usera.createdTeams[_matchid];
-            for (uint256 i = 0; i < _players.length; i++) {
-                tempteam.players.push(
-                    crickter({
-                        playerType: _players[i][0],
-                        playerPoints: stringToUint(_players[i][1]),
-                        playerid: stringToUint(_players[i][2]),
-                        isCaptain: _players[i][3],
-                        isVCaptain: _players[i][4]
-                    })
-                );
-            }
-            tempteam.matchPoints = 0;
-            totalPool[_matchid] = msg.value + totalPool[_matchid];
-            return "successfull";
-        
+        }
+        teams storage tempteam = usera.createdTeams[_matchid];
+        for (uint256 i = 0; i < _players.length; i++) {
+            tempteam.players.push(
+                crickter({
+                    playerType: _players[i][0],
+                    playerPoints: stringToUint(_players[i][1]),
+                    playerid: stringToUint(_players[i][2]),
+                    isCaptain: _players[i][3],
+                    isVCaptain: _players[i][4]
+                })
+            );
+        }
+        tempteam.matchPoints = 0;
+        totalPool[_matchid] = msg.value + totalPool[_matchid];
+        return "successfull";
     }
 }
