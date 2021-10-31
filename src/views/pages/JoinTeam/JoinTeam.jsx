@@ -14,6 +14,8 @@ function JoinTeam(props) {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 	const [success, setSuccess] = useState(false);
+	const [score, setScore] = useState(0);
+	const [scoreError, setScoreError] = useState(false);
 	const params = useParams();
 
 	useEffect(() => {
@@ -30,6 +32,12 @@ function JoinTeam(props) {
 	function selectPlayer(playerInfo) {
 		//console.log("hi");
 		setSelectedTeam([...selectedTeam, playerInfo]);
+
+		var totalscore = score + playerInfo.pointRequired;
+
+		if (totalscore > 100) {
+			setScoreError(true);
+		} else setScore(totalscore);
 
 		if (selectedTeam.length === 11) {
 			setSuccess(true);
@@ -64,7 +72,13 @@ function JoinTeam(props) {
 					<button>Create Team</button>
 				</div>
 			)}
-
+			{scoreError && (
+				<Alert severity="error">
+					<AlertTitle>Error</AlertTitle>
+					<strong> Total Score Should Be Less Than 100 </strong>
+				</Alert>
+			)}
+			<div>Total Points :- {score}</div>
 			<Grid container spacing={2}>
 				<Grid item xs={12} lg={4}>
 					{/* show teamA list */}
