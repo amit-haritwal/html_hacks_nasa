@@ -7,21 +7,21 @@ export const MATCHES = [
       teamName: "England",
       players: [
         {
-          playerName: "Morgan",
+          playerName: "Eoin Morgan",
           displayPicture:
-            "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
-          pointRequired: 9,
+            "https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/316500/316564.png",
+          pointRequired: 14,
           playerType: "Batsman",
           playerId: "Morgan1",
         },
         
         {
-          playerName: "Ali",
+          playerName: "Moeen Ali",
           displayPicture:
-            "https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg",
+            "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170953/moeen-ali.jpg",
           pointRequired: 9,
           playerId: "Ali2",
-          playerType: "Batsman",
+          playerType: "All-Rounder",
         },
         {
           playerName: "Stokes",
@@ -73,7 +73,7 @@ export const MATCHES = [
       teamName: "India",
       players: [
         {
-                  playerName: "Virat",
+          playerName: "Virat Kohli",
           displayPicture: "https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
           pointRequired: 9,
           playerType: "Batsman",
@@ -83,17 +83,12 @@ export const MATCHES = [
           playerName: "MS Dhoni",
           displayPicture: "https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg",
           pointRequired: 9,
-          playerId: "virat_234876",
-          playerType: "Batsman",
-        },
-        {
-          playerName: "Dhoni",
           playerId: "dhoni_987",
-          pointRequired: 9,
-          playerType: "Batsman",
+          playerType: "Wicketkeeper",
         },
         {
           playerName: "Rohit Sharma",
+          displayPicture: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkzaZ3b0KxUBdvUqoehSx4MXxnC2zl6F7770O3U_ux3jzKiZ-ecJUrrYqSANDgwUzP9tY&usqp=CAU",
           playerId: "rohit_897384",
           pointRequired: 9,
           playerType: "Batsman",

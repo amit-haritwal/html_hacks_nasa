@@ -1,5 +1,5 @@
 // material-ui
-import { Typography, Chip, Grid } from "@mui/material";
+import { Typography, Chip, Grid , Button} from "@mui/material";
 
 // project imports
 import MainCard from "ui-component/cards/MainCard";
@@ -17,12 +17,9 @@ const DashboardPage = () => (
     </Typography>
     {MATCHES.map((match, index) => {
       return (
-        <MainCard
-          title="India vs Pakistan"
-          actionButton={<Link to={`/joinMatch/${match.match_id}`}>Join</Link>}
-        >
-          <Grid container spacing={24}>
-            <Grid item xs={12} lg={6}>
+        <MainCard title="India vs Pakistan">
+          <Grid container spacing={24} sx={{mb:2}}>
+            <Grid item xs={12} lg={6} >
               <Typography variant="body2">ICC Cricket World Cup</Typography>
               <Chip label="India" />
               <Chip label="Pakistan" />
@@ -32,6 +29,11 @@ const DashboardPage = () => (
               <Chip color="error" label=" Prize Pool - 300 ETH" />
             </Grid>
           </Grid>
+          <Link style={{textDecoration:"none"}} to={`/joinMatch/${match.match_id}`}>
+          <Button variant="contained" color="primary" >
+          Join
+          </Button>
+          </Link>
         </MainCard>
       );
     })}
