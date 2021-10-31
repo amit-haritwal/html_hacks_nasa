@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { MATCHES } from "utils/data";
 import TeamList from "./TeamList";
 import PlayerCard from "./PlayerCard";
@@ -11,6 +11,8 @@ import TotalPoints from "./TotalPoints";
 import useUserContract from "hooks/useUserContract";
 
 function JoinTeam(props) {
+  const navigate = useNavigate();
+
   //mid
   const [matchInfo, setMatchInfo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -71,6 +73,8 @@ function JoinTeam(props) {
         value: 100000000000000000,
       }
     );
+
+    navigate("/leaderboard/match_1");
   }
 
   function selectPlayer(playerInfo) {
