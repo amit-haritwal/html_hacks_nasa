@@ -1,15 +1,36 @@
 import { injected } from "./connectors";
 import { useWeb3React } from "@web3-react/core";
 import { Button } from "@mui/material";
+import useUserContract from "hooks/useUserContract";
 
 function MetaMaskConector() {
-  const { activate, active, library, connector, deactivate, account } =
+  const { activate, active, library, connector, deactivate, account, error } =
     useWeb3React();
+  if (error) console.error(error);
+  const { initContract, createUser, userInstance } = useUserContract();
   async function connectWallet() {
     try {
+      await activate(injected);
+      const instance = await initContract();
+      console.log(
+        instance.createUser("0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435", {
+          from: "0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435",
+        })
+      );
+
+      // instance
+      //   .request({
+      //     method: "createUser",
+      //     params: ["0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435"],
+      //   })
+      //   .then((res) => {
+      //     console.log(res);
+      //   });
+      // await instance.createUser("0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435");
+      //await createUser("0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435");
       console.log(account);
       console.log(active);
-      await activate(injected);
+      console.log(userInstance);
     } catch (exeption) {
       console.error(exeption);
     }

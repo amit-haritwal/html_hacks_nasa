@@ -14,6 +14,7 @@ function PlayerCard(props) {
   }
 
   function handleOnPlayerAdd() {
+    console.log(window.web3);
     onSelectPlayer(playerInfo);
     toggleSelect();
   }
