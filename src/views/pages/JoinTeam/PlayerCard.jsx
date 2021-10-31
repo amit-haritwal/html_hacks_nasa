@@ -27,17 +27,19 @@ function PlayerCard(props) {
       <CardHeader
         avatar={<Avatar src={playerInfo.displayPicture} aria-label="Player" />}
         action={
-          <IconButton aria-label="add">
-            {selected ? (
-              <button onClick={handleRemovePlayer}>
-                <RemoveIcon />
-              </button>
-            ) : (
-              <button onClick={handleOnPlayerAdd}>
-                <AddIcon />
-              </button>
-            )}
-          </IconButton>
+          onSelectPlayer && (
+            <IconButton aria-label="add">
+              {selected ? (
+                <button onClick={handleRemovePlayer}>
+                  <RemoveIcon />
+                </button>
+              ) : (
+                <button onClick={handleOnPlayerAdd}>
+                  <AddIcon />
+                </button>
+              )}
+            </IconButton>
+          )
         }
         title={playerInfo.playerName}
         subheader={playerInfo.playerType}
