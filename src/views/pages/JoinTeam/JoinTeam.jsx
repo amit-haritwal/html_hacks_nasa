@@ -62,16 +62,17 @@ function JoinTeam(props) {
 	}
 	return (
 		<>
-			{error && (
-				<Alert severity="error">
+
+			<Grid container spacing={3} >
+				<Grid item xs={12}  lg={4} sx={{my:2}}>
+			<TotalPoints score={score} />
+				</Grid>
+				<Grid item xs={12} lg={4} sx={{my:2}}>
+							{error && (
+				<Alert severity="error" sx={{mb:2}}>
 					<AlertTitle>Error</AlertTitle>
 					<strong> Only 11 Players Are Allowed </strong>
 				</Alert>
-			)}
-			{success && (
-				<div>
-					<Button color="primary" >Create Team</Button>
-				</div>
 			)}
 			{scoreError && (
 				<Alert severity="error">
@@ -79,7 +80,15 @@ function JoinTeam(props) {
 					<strong> Total Score Should Be Less Than 100 </strong>
 				</Alert>
 			)}
-			<div>Total Points :- {score}</div>
+				</Grid>
+				<Grid item align="center" xs={12}  lg={4} sx={{my:2}} >
+			{success ? (
+					<Button color="primary" variant="outlined">Create Team</Button>
+			):(
+				<Alert severity="info"> <AlertTitle>Please Select 11 Players</AlertTitle> <strong>{selectedTeam.length} Players Selected</strong> </Alert>
+			)}
+			</Grid>
+				</Grid>
 			<Grid container spacing={2}>
 				<Grid item xs={12} lg={4}>
 					{/* show teamA list */}
