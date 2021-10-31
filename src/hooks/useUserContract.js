@@ -37,9 +37,14 @@ export default function useUserContract() {
     });
   }
 
+  async function createTeam(_uid, matchid, players) {
+    return await instance.createTeam(_uid, matchid, players, { from: _uid });
+  }
+
   return {
     createUser,
     initContract,
     userInstance: instance,
+    createTeam,
   };
 }
