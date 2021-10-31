@@ -3,7 +3,7 @@
 pragma solidity ^0.8.6;
 
 contract User {
-    uint256 private totalPool;
+    
     struct crickter {
         uint256 playerid;
         string playerType;
@@ -20,11 +20,14 @@ contract User {
         address uid;
         mapping(uint256 => teams) createdTeams;
     }
-    mapping(address => user) public users;
+		mapping(uint256 => address[]) private allusers;
+    mapping(uint256 => uint256) private totalPool;
+		mapping(address => user) public users;
 
     function createUser(address _uid) public {
         user storage usera = users[_uid];
         usera.uid = _uid;
+				allusers[0].push(_uid);
     }
 
     function stringToUint(string memory s) private returns (uint256 result) {
@@ -39,6 +42,38 @@ contract User {
             }
         }
     }
+		
+
+		function getPoints(uint256 _matchid) public returns (uint[] memory ,address[] memory ){
+				 	require (allusers[0].length > 0);
+				 	address[] memory temp=allusers[0];
+					uint[] memory ans;
+					address[] memory ansa;
+					for(uint256 i=0; i<= temp.length; i++){
+						if(users[allusers[0][i]].createdTeams[_matchid].matchPoints>0){
+							uint  _att = ans[i];
+      				ans[i] = _att;
+							address payable _address = payable(ansa[i]);
+      				ansa[i] = _address;
+						
+						}
+					}
+    			return (ans,ansa);
+		}
+
+		function givePrice(uint256 _matchid) public returns (string memory){
+				 	require (allusers[0].length > 0);
+				 	address[] memory temp=allusers[0];
+					address payable winner;
+					uint256 currentpoints=0;
+					for(uint256 i=0; i<= temp.length; i++){
+						if(users[allusers[0][i]].createdTeams[_matchid].matchPoints>currentpoints){
+							winner =payable(allusers[0][i]);
+							currentpoints=users[allusers[0][i]].createdTeams[_matchid].matchPoints;
+						}
+					}
+					winner.transfer(totalPool[_matchid]);
+		}
 
     function createTeam(
         address _uid,
@@ -108,7 +143,7 @@ contract User {
         }
         if (keepercount < 1) {
             return "there should be atleast one keeper";
-        } else {
+        } 
             teams storage tempteam = usera.createdTeams[_matchid];
             for (uint256 i = 0; i < _players.length; i++) {
                 tempteam.players.push(
@@ -122,10 +157,8 @@ contract User {
                 );
             }
             tempteam.matchPoints = 0;
-            totalPool = msg.value + totalPool;
+            totalPool[_matchid] = msg.value + totalPool[_matchid];
             return "successfull";
-        }
+        
     }
 }
-
-// [ ["Batter","9","1","0","1"], ["Boller","9","2","0","1"], ["Keeper","9","3","0","1"], ["Boller","1","4","0","1"], ["Boller","1","5","0","1"], ["Boller","1","6","0","1"], ["Batter","9","7","0","1"], ["Batter","9","8","0","1"], ["Batter","9","9","0","1"], ["Batter","9","10","0","1"], ["Batter","9","11","0","1"] ]
