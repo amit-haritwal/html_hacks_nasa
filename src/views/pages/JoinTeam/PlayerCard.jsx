@@ -1,26 +1,26 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 import { Card, CardHeader, Avatar, IconButton, Divider, Button } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
 function PlayerCard(props) {
-  const { playerInfo, onSelectPlayer, teamDetails, setTeam, removePlayer } =
-    props;
+	const { playerInfo, onSelectPlayer, teamDetails, setTeam, removePlayer } =
+		props;
 
-  const [selected, setSelected] = useState(false);
-  function toggleSelect() {
-    setSelected(!selected);
-  }
+	const [selected, setSelected] = useState(false);
+	function toggleSelect() {
+		setSelected(!selected);
+	}
 
-  function handleOnPlayerAdd() {
-    onSelectPlayer(playerInfo);
-    toggleSelect();
-  }
-  function handleRemovePlayer() {
-    removePlayer(playerInfo);
-    toggleSelect();
-  }
+	function handleOnPlayerAdd() {
+		onSelectPlayer(playerInfo);
+		toggleSelect();
+	}
+	function handleRemovePlayer() {
+		removePlayer(playerInfo);
+		toggleSelect();
+	}
 
   return (
     <Card sx={{ maxWidth: 345, my: 1, mx: 0 }}>
