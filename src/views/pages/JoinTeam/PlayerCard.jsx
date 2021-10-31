@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Card, CardHeader, Avatar, IconButton, Divider, Button } from "@mui/material";
+import { Card, CardHeader, Avatar, IconButton, Divider, Button, CardContent, Chip } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 
@@ -41,9 +41,11 @@ function PlayerCard(props) {
             </>
           )
         }
+        sx={onSelectPlayer?{pb: 1}:null}
         title={playerInfo.playerName}
         subheader={playerInfo.playerType}
       />
+      {onSelectPlayer && <Chip size="small" color="error" label={`${playerInfo.pointRequired} Points required`}  sx={{ml:9,mb:1}} />}
       <Divider />
     </Card>
   );

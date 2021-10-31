@@ -115,12 +115,9 @@ function JoinTeam(props) {
 					<Typography variant="h2" align="center" gutterBottom>
 						Your Team
 					</Typography>
+					<div style={{  height: "34rem", width: "auto", overflowY: "auto",}}>
 					{selectedTeam.length > 0 &&
 						selectedTeam.map((player) => {
-							{
-								/* console.log('selectedteam', selectedTeam); */
-							}
-
 							return (
 								<PlayerCard
 									playerInfo={player}
@@ -129,6 +126,7 @@ function JoinTeam(props) {
 								/>
 							);
 						})}
+					</div>
 				</Grid>
 
 				<Grid item xs={12} lg={4}>
