@@ -110,6 +110,7 @@ contract User {
 						isVCaptain: _players[i][4]
 					})
 				);
+				
 			}
 			return "successfull";
 		}
