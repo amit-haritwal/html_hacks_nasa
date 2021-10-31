@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { MATCHES } from 'utils/data';
 import TeamList from './TeamList';
 import PlayerCard from './PlayerCard';
-import { Grid, Button , Typography} from '@mui/material';
+import { Grid, Button, Typography } from '@mui/material';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Stack from '@mui/material/Stack';
@@ -53,6 +53,10 @@ function JoinTeam(props) {
 	}
 
 	function removePlayer(playerInfo) {
+		var totalscore = score - playerInfo.pointRequired;
+
+		setScore(totalscore);
+
 		setSelectedTeam(
 			selectedTeam.filter((player) => {
 				if (player.playerId === playerInfo.playerId) return false;
@@ -70,7 +74,7 @@ function JoinTeam(props) {
 			)}
 			{success && (
 				<div>
-					<Button color="primary" >Create Team</Button>
+					<Button color="primary">Create Team</Button>
 				</div>
 			)}
 			{scoreError && (
@@ -80,6 +84,13 @@ function JoinTeam(props) {
 				</Alert>
 			)}
 			<div>Total Points :- {score}</div>
+			{/* <div>
+        <div>Batsmans:- </div>
+        <div>Bowlers:- </div>
+        <div>WicketKeepers:- </div>
+     
+
+      </div> */}
 			<Grid container spacing={2}>
 				<Grid item xs={12} lg={4}>
 					{/* show teamA list */}
@@ -94,7 +105,9 @@ function JoinTeam(props) {
 					)}
 				</Grid>
 				<Grid item xs={12} lg={4}>
-					<Typography variant="h2" align="center" gutterBottom >Your Team</Typography>
+					<Typography variant="h2" align="center" gutterBottom>
+						Your Team
+					</Typography>
 					{selectedTeam.length > 0 &&
 						selectedTeam.map((player) => {
 							{
