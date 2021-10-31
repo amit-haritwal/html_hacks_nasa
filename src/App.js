@@ -13,6 +13,7 @@ import themes from "themes";
 
 // project imports
 import NavigationScroll from "layout/NavigationScroll";
+import { useEffect } from "react";
 
 // ==============================|| APP ||============================== //
 
@@ -21,7 +22,22 @@ function getLibrary(provider) {
 }
 const App = () => {
   const customization = useSelector((state) => state.customization);
-
+  // useEffect(() => {
+  //   window.addEventListener("load", () => {
+  //     if (window.ethereum) {
+  //       window.web3 = new Web3(window.ethereum);
+  //       try {
+  //         window.ethereum.enable().then(function () {
+  //           // user allowed
+  //         });
+  //       } catch (e) {}
+  //     } else if (window.web3) {
+  //       window.web3 = new Web3(window.web3.currentProvider);
+  //     } else {
+  //       alert("you have to install meta mask");
+  //     }
+  //   });
+  // }, []);
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={themes(customization)}>
