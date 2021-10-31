@@ -1,61 +1,87 @@
-import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { MATCHES } from 'utils/data';
-import TeamList from './TeamList';
-import PlayerCard from './PlayerCard';
-import { Grid, Button, Typography } from '@mui/material';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Stack from '@mui/material/Stack';
-import TotalPoints from './TotalPoints';
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { MATCHES } from "utils/data";
+import TeamList from "./TeamList";
+import PlayerCard from "./PlayerCard";
+import { Grid, Button, Typography } from "@mui/material";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
+import Stack from "@mui/material/Stack";
+import TotalPoints from "./TotalPoints";
+import useUserContract from "hooks/useUserContract";
 
 function JoinTeam(props) {
-	//mid
-	const [matchInfo, setMatchInfo] = useState(null);
-	const [loading, setLoading] = useState(true);
-	const [error, setError] = useState(false);
-	const [success, setSuccess] = useState(false);
-	const [score, setScore] = useState(0);
-	const [scoreError, setScoreError] = useState(false);
-	const params = useParams();
+  //mid
+  const [matchInfo, setMatchInfo] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [score, setScore] = useState(0);
+  const [scoreError, setScoreError] = useState(false);
+  const params = useParams();
+  const { createTeam, initContract } = useUserContract();
+  useEffect(() => {
+    MATCHES.forEach((match) => {
+      if (match.match_id === params.mId) {
+        setMatchInfo(match);
+        setLoading(false);
+      }
+    });
+  }, []);
 
-	useEffect(() => {
-		MATCHES.forEach((match) => {
-			if (match.match_id === params.mId) {
-				setMatchInfo(match);
-				setLoading(false);
-			}
-		});
-	}, []);
+  const [selectedTeam, setSelectedTeam] = useState([]);
 
-	const [selectedTeam, setSelectedTeam] = useState([]);
+  async function handleCreateTeam() {
+    const instance = await initContract();
+    // build 2darray
+    let array = [];
+    selectedTeam.forEach((player) => {
+      array.push([
+        player.playerType,
+        `${player.pointRequired}`,
+        player.playerId,
+        "0",
+        "0",
+      ]);
+    });
+    array[0][3] = "1";
+    array[1][4] = "1";
+    await instance.createTeam(
+      "0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435",
+      "2",
+      array,
+      {
+        from: "0x883cC4DD066D607c4A533Bd2AABCC90BAab7C435",
+      }
+    );
+  }
 
-	function selectPlayer(playerInfo) {
-		//console.log("hi");
-		setSelectedTeam([...selectedTeam, playerInfo]);
+  function selectPlayer(playerInfo) {
+    //console.log("hi");
+    setSelectedTeam([...selectedTeam, playerInfo]);
 
-		var totalscore = score + playerInfo.pointRequired;
+    var totalscore = score + playerInfo.pointRequired;
 
-		if (totalscore > 100) {
-			setScoreError(true);
-		} else setScore(totalscore);
+    if (totalscore >= 100) {
+      setScoreError(true);
+    } else setScore(totalscore);
 
-		if (selectedTeam.length === 11) {
-			setSuccess(true);
-		}
+    if (selectedTeam.length === 11) {
+      setSuccess(true);
+    }
 
-		if (selectedTeam.length > 11) {
-			setSelectedTeam(selectedTeam.slice(1));
-			console.log('error check');
-			setError(true);
-			// setSuccess(true);
-		}
-	}
+    if (selectedTeam.length > 11) {
+      setSelectedTeam(selectedTeam.slice(1));
+      console.log("error check");
+      setError(true);
+      // setSuccess(true);
+    }
+  }
 
-	function removePlayer(playerInfo) {
-		var totalscore = score - playerInfo.pointRequired;
+  function removePlayer(playerInfo) {
+    var totalscore = score - playerInfo.pointRequired;
 
-		setScore(totalscore);
+    setScore(totalscore);
 
 		setSelectedTeam(
 			selectedTeam.filter((player) => {
@@ -129,19 +155,19 @@ function JoinTeam(props) {
 					</div>
 				</Grid>
 
-				<Grid item xs={12} lg={4}>
-					{!loading && (
-						<TeamList
-							teamName={matchInfo?.teamB.teamName}
-							players={matchInfo?.teamB.players}
-							removePlayer={removePlayer}
-							onSelectPlayer={selectPlayer}
-						/>
-					)}
-				</Grid>
-			</Grid>
-		</>
-	);
+        <Grid item xs={12} lg={4}>
+          {!loading && (
+            <TeamList
+              teamName={matchInfo?.teamB.teamName}
+              players={matchInfo?.teamB.players}
+              removePlayer={removePlayer}
+              onSelectPlayer={selectPlayer}
+            />
+          )}
+        </Grid>
+      </Grid>
+    </>
+  );
 }
 
 export default JoinTeam;
