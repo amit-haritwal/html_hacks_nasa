@@ -2,137 +2,338 @@
 
 export const MATCHES = [
 	{
-		match_id: 'match_1',
+		match_id: "match_1",
 		teamA: {
-			teamName: 'England',
+			teamName: "England",
 			players: [
 				{
-					playerName: 'Eoin Morgan',
+					playerName: "Eoin Morgan",
 					displayPicture:
-						'https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/316500/316564.png',
+						"https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/316500/316564.png",
 					pointRequired: 11,
-					playerType: 'Batsman',
-					playerId: 'Morgan1',
+					playerType: "Batsman",
+					playerId: "Morgan1",
 				},
 
 				{
-					playerName: 'Moeen Ali',
+					playerName: "Moeen Ali",
 					displayPicture:
-						'https://m.cricbuzz.com/a/img/v1/192x192/i1/c170953/moeen-ali.jpg',
+						"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170953/moeen-ali.jpg",
 					pointRequired: 9,
-					playerId: 'Ali2',
-					playerType: 'All-Rounder',
+					playerId: "Ali2",
+					playerType: "All-Rounder",
 				},
 				{
-					playerName: 'Stokes',
-					playerId: 'Stokes3',
+					playerName: "Stokes",
+					playerId: "Stokes3",
 					displayPicture:
-						'https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg',
+						"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
 					pointRequired: 10,
-					playerType: 'Batsman',
+					playerType: "Batsman",
 				},
 				{
-					playerName: 'Archer',
-					playerId: 'Arc324her',
+					playerName: "Archer",
+					playerId: "Arc324her",
 					displayPicture:
-						'https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg',
+						"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
 					pointRequired: 11,
-					playerType: 'Batsman',
+					playerType: "Batsman",
 				},
 				{
-					playerName: 'Bairstow',
-					playerId: 'Bairstow2341',
+					playerName: "Bairstow",
+					playerId: "Bairstow2341",
 					displayPicture:
-						'https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg',
+						"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
 					pointRequired: 8,
-					playerType: 'Batsman',
+					playerType: "Batsman",
 				},
 				{
-					playerName: 'Billings Pandya',
-					playerId: 'Billings234',
+					playerName: "Billings Pandya",
+					playerId: "Billings234",
 					displayPicture:
-						'https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg',
+						"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
 					pointRequired: 9,
-					playerType: 'Batsman',
+					playerType: "Batsman",
 				},
 				{
-					playerName: 'Buttler Yadav',
+					playerName: "Buttler Yadav",
 					pointRequired: 10,
-					playerId: 'Buttler23423499',
-					playerType: 'Bowler',
+					playerId: "Buttler23423499",
+					playerType: "Bowler",
 				},
 				{
-					playerName: 'Jasprit Curran',
-					playerId: 'Curran923847',
+					playerName: "Jasprit Curran",
+					playerId: "Curran923847",
 					pointRequired: 8,
-					playerType: 'Bowler',
+					playerType: "Bowler",
 				},
 			],
 		},
 		teamB: {
-			teamName: 'India',
+			teamName: "India",
 			players: [
 				{
-					playerName: 'Virat Kohli',
+					playerName: "Virat Kohli",
 					displayPicture:
-						'https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg',
+						"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
 					pointRequired: 9,
-					playerType: 'Batsman',
-					playerId: 'hardik_93874',
+					playerType: "Batsman",
+					playerId: "hardik_93874",
 				},
 				{
-					playerName: 'MS Dhoni',
+					playerName: "MS Dhoni",
 					displayPicture:
-						'https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg',
+						"https://cdn.britannica.com/25/222725-050-170F622A/Indian-cricketer-Mahendra-Singh-Dhoni-2011.jpg",
 					pointRequired: 9,
-					playerId: 'dhoni_987',
-					playerType: 'Wicketkeeper',
+					playerId: "dhoni_987",
+					playerType: "Wicketkeeper",
 				},
 				{
-					playerName: 'Rohit Sharma',
+					playerName: "Rohit Sharma",
 					displayPicture:
-						'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkzaZ3b0KxUBdvUqoehSx4MXxnC2zl6F7770O3U_ux3jzKiZ-ecJUrrYqSANDgwUzP9tY&usqp=CAU',
-					playerId: 'rohit_897384',
+						"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkzaZ3b0KxUBdvUqoehSx4MXxnC2zl6F7770O3U_ux3jzKiZ-ecJUrrYqSANDgwUzP9tY&usqp=CAU",
+					playerId: "rohit_897384",
 					pointRequired: 9,
-					playerType: 'Batsman',
+					playerType: "Batsman",
 				},
 				{
-					playerName: 'KL Rahul',
-					playerId: 'KL_098234',
+					playerName: "KL Rahul",
+					playerId: "KL_098234",
 					pointRequired: 9,
-					playerType: 'Baller',
+					playerType: "Baller",
 				},
 				{
-					playerName: 'Rishabh Pant',
-					playerId: 'pant_0938248',
+					playerName: "Rishabh Pant",
+					playerId: "pant_0938248",
 					pointRequired: 5,
-					playerType: 'Baller',
+					playerType: "Baller",
 				},
 				{
-					playerName: 'Mohammad Shami',
-					playerId: 'shami_09238444',
+					playerName: "Mohammad Shami",
+					playerId: "shami_09238444",
 					pointRequired: 6,
-					playerType: 'Baller',
+					playerType: "Baller",
 				},
 				{
-					playerName: 'Ravindra Jadeja',
+					playerName: "Ravindra Jadeja",
 					pointRequired: 7,
-					playerId: 'jadeja_023847',
-					playerType: 'Baller',
+					playerId: "jadeja_023847",
+					playerType: "Baller",
 				},
 				{
-					playerName: 'Shardul Thakur',
+					playerName: "Shardul Thakur",
 					pointRequired: 3,
-					playerId: 'thakur_93982374',
-					playerType: 'Baller',
+					playerId: "thakur_93982374",
+					playerType: "Baller",
 				},
 			],
 		},
 		matchType: {
-			sport: 'Cricket',
-			sportType: 'oneDay',
+			sport: "Cricket",
+			sportType: "oneDay",
 			overs: 20,
 		},
+	},
+];
+
+export const USERS = [
+	{
+		userName: "Amit haritwal",
+		players: [
+			{
+				playerName: "Eoin Morgan",
+				displayPicture:
+					"https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/316500/316564.png",
+				pointRequired: 11,
+				playerType: "Batsman",
+				playerId: "Morgan1",
+			},
+
+			{
+				playerName: "Moeen Ali",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170953/moeen-ali.jpg",
+				pointRequired: 9,
+				playerId: "Ali2",
+				playerType: "All-Rounder",
+			},
+			{
+				playerName: "Stokes",
+				playerId: "Stokes3",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 10,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Archer",
+				playerId: "Arc324her",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 11,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Bairstow",
+				playerId: "Bairstow2341",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 8,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Billings Pandya",
+				playerId: "Billings234",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 9,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Buttler Yadav",
+				pointRequired: 10,
+				playerId: "Buttler23423499",
+				playerType: "Bowler",
+			},
+			{
+				playerName: "Jasprit Curran",
+				playerId: "Curran923847",
+				pointRequired: 8,
+				playerType: "Bowler",
+			},
+		],
+	},
+	{
+		userName: "Hardik",
+		players: [
+			{
+				playerName: "Eoin Morgan",
+				displayPicture:
+					"https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/316500/316564.png",
+				pointRequired: 11,
+				playerType: "Batsman",
+				playerId: "Morgan1",
+			},
+
+			{
+				playerName: "Moeen Ali",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170953/moeen-ali.jpg",
+				pointRequired: 9,
+				playerId: "Ali2",
+				playerType: "All-Rounder",
+			},
+			{
+				playerName: "Stokes",
+				playerId: "Stokes3",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 10,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Archer",
+				playerId: "Arc324her",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 11,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Bairstow",
+				playerId: "Bairstow2341",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 8,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Billings Pandya",
+				playerId: "Billings234",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 9,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Buttler Yadav",
+				pointRequired: 10,
+				playerId: "Buttler23423499",
+				playerType: "Bowler",
+			},
+			{
+				playerName: "Jasprit Curran",
+				playerId: "Curran923847",
+				pointRequired: 8,
+				playerType: "Bowler",
+			},
+		],
+	},
+	{
+		userName: "Rajendra",
+		players: [
+			{
+				playerName: "Eoin Morgan",
+				displayPicture:
+					"https://img1.hscicdn.com/image/upload/f_auto,t_gn_f_345/lsci/db/PICTURES/CMS/316500/316564.png",
+				pointRequired: 11,
+				playerType: "Batsman",
+				playerId: "Morgan1",
+			},
+
+			{
+				playerName: "Moeen Ali",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170953/moeen-ali.jpg",
+				pointRequired: 9,
+				playerId: "Ali2",
+				playerType: "All-Rounder",
+			},
+			{
+				playerName: "Stokes",
+				playerId: "Stokes3",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 10,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Archer",
+				playerId: "Arc324her",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 11,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Bairstow",
+				playerId: "Bairstow2341",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 8,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Billings Pandya",
+				playerId: "Billings234",
+				displayPicture:
+					"https://m.cricbuzz.com/a/img/v1/192x192/i1/c170661/virat-kohli.jpg",
+				pointRequired: 9,
+				playerType: "Batsman",
+			},
+			{
+				playerName: "Buttler Yadav",
+				pointRequired: 10,
+				playerId: "Buttler23423499",
+				playerType: "Bowler",
+			},
+			{
+				playerName: "Jasprit Curran",
+				playerId: "Curran923847",
+				pointRequired: 8,
+				playerType: "Bowler",
+			},
+		],
 	},
 ];
 
