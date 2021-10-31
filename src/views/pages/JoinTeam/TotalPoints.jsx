@@ -9,7 +9,7 @@ import MainCard from 'ui-component/cards/MainCard';
 import TotalIncomeCard from 'ui-component/cards/Skeleton/TotalIncomeCard';
 
 // assets
-import StorefrontTwoToneIcon from '@mui/icons-material/StorefrontTwoTone';
+import SportsScoreIcon from '@mui/icons-material/SportsScore';
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -39,16 +39,12 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ==============================|| DASHBOARD - TOTAL INCOME LIGHT CARD ||============================== //
 
-const TotalIncomeLightCard = ({ isLoading }) => {
+const TotalIncomeLightCard = ({score}) => {
     const theme = useTheme();
 
     return (
-        <>
-            {isLoading ? (
-                <TotalIncomeCard />
-            ) : (
                 <CardWrapper border={false} content={false}>
-                    <Box sx={{ p: 2 }}>
+                    <Box sx={{ p: 2 }} >
                         <List sx={{ py: 0 }}>
                             <ListItem alignItems="center" disableGutters sx={{ py: 0 }}>
                                 <ListItemAvatar>
@@ -61,7 +57,7 @@ const TotalIncomeLightCard = ({ isLoading }) => {
                                             color: theme.palette.warning.dark
                                         }}
                                     >
-                                        <StorefrontTwoToneIcon fontSize="inherit" />
+                                        <SportsScoreIcon />
                                     </Avatar>
                                 </ListItemAvatar>
                                 <ListItemText
@@ -70,7 +66,7 @@ const TotalIncomeLightCard = ({ isLoading }) => {
                                         mt: 0.45,
                                         mb: 0.45
                                     }}
-                                    primary={<Typography variant="h4">$203k</Typography>}
+                                    primary={<Typography variant="h4">{score}</Typography>}
                                     secondary={
                                         <Typography
                                             variant="subtitle2"
@@ -79,7 +75,7 @@ const TotalIncomeLightCard = ({ isLoading }) => {
                                                 mt: 0.5
                                             }}
                                         >
-                                            Total Income
+                                            Total Score
                                         </Typography>
                                     }
                                 />
@@ -87,8 +83,6 @@ const TotalIncomeLightCard = ({ isLoading }) => {
                         </List>
                     </Box>
                 </CardWrapper>
-            )}
-        </>
     );
 };
 
